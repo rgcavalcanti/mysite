@@ -22,6 +22,7 @@ const Info = styled.div`
   height: 100%;
   position: relative;
   padding: 16px;
+  flex: 1 auto;
 `
 const Avatar = styled.img`
   position: absolute;
