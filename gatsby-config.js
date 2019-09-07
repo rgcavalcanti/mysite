@@ -1,16 +1,18 @@
 module.exports = {
   plugins: [
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: `gatsby-plugin-styled-components`,
       options: {
-        pathToConfigModule: `src/utils/typography`,
+        "displayName": true
       },
     },
     {
-      resolve: `gatsby-plugin-styled-components`,
+      resolve: "gatsby-plugin-react-svg",
       options: {
-        // Add any options here
-      },
-    },
+        rule: {
+          include: /icons/ // See below to configure properly
+        }
+      }
+    }
   ],
 }

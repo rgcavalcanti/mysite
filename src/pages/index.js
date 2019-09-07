@@ -1,35 +1,97 @@
 import React from "react"
+import styled, { keyframes } from "styled-components"
+import Layout from "../components/Layout"
+import { Link } from "gatsby"
 
-import Layout from "../components/layout"
-import avatar from "../images/avatar.jpg"
-import styled from "styled-components"
+import avatarUrl from "../images/avatar.png"
+import Arrow from "../icons/arrow.svg"
 
-const Avatar = styled.div`
-  width: 200px;
-  height: 200px;
+const Jumbo = styled.div`
+  margin-bottom: 52px;
+
+  h1 {
+    font-family: ${props => props.theme.fontPrimary};
+    font-size: 4.6rem;
+    text-align: center;
+    font-weight: ${props => props.theme.fontBlack};
+  }
+`
+
+const Info = styled.div`
+  background-color: ${props => props.theme.yellow};
+  height: 100%;
+  position: relative;
+  padding: 16px;
+`
+const Avatar = styled.img`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+`
+
+const Description = styled.p`
+  font-size: 1.8rem;
+  text-align: right;
+`
+const ProfileCTA = styled.div`
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  flex-flow: column nowrap;
+
+  span {
+    text-align: right;
+    font-family: ${props => props.theme.fontSecondary};
+    margin-bottom: 4px;
+  }
+`
+const Button = styled(Link)`
+  background-color: ${props => props.theme.white};
   border-radius: 100%;
-  background-size: cover;
-  background-image: url(${avatar});
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
-`
-const Title = styled.h1`
-  font-size: 2.4rem;
-  color: #3299bb;
-`
-
-const Subtitle = styled.p`
-  font-size: 1.6rem;
-  text-align: center;
-  color: #424242;
+  height: 42px;
+  width: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
 `
 
-export default () => (
-  <Layout>
-    <Avatar src={avatar} />
-    <Title>Rafael G. Cavalcanti</Title>
-    <Subtitle>
-      Desenvolvedor Full-Stack. Apaixonado por novas tecnologias e amante de
-      novos desafios
-    </Subtitle>
-  </Layout>
-)
+const moveArrow = keyframes`
+  0% {
+    transform: translate(-2px);
+  }
+
+  100% {
+    transform: translate(2px);
+  }
+`
+
+const IconArrow = styled(Arrow)`
+  fill: ${props => props.theme.black};
+  animation: .8s ${moveArrow} infinite alternate;
+`
+
+export default props => {
+  return (
+    <Layout>
+      <Jumbo>
+        <h1>RAFAEL CAVALCANTI</h1>
+      </Jumbo>
+      <Info>
+        <Avatar src={avatarUrl} alt="rafael cavalcanti" />
+        <Description>
+          Sou <br /> Fullstack Developer <br /> localizado no <br /> Rio de
+          Janeiro
+        </Description>
+        <ProfileCTA>
+          <span>VIEW</span>
+          <span>PROFILE</span>
+          <Button to="/about">
+            <IconArrow />
+          </Button>
+        </ProfileCTA>
+      </Info>
+    </Layout>
+  )
+}
