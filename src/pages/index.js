@@ -27,6 +27,7 @@ const Avatar = styled.img`
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 80vw;
 `
 
 const Description = styled.p`
