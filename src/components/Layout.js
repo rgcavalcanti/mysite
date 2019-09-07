@@ -20,11 +20,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html, body, #___gatsby {
-    height: 100%;
+    min-height: 100%;
   }
 
   div[role="group"][tabindex] {
-    height: 100%;
+    min-height: 100%;
     display: flex;
     flex-flow: column nowrap;
   }
